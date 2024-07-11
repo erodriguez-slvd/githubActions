@@ -29,16 +29,5 @@ jobs:
       - name: Install dependencies
         run: mvn clean install -DskipTests
 
-      - name: Install carina-demo project
-        run:
-          mvn archetype:generate -DarchetypeGroupId=com.zebrunner \
-                       -DarchetypeArtifactId=carina-archetype \
-                       -DarchetypeVersion=RELEASE \
-                       -DgroupId=com.solvd \
-                       -DartifactId=carina-demo \
-                       -Dname="Carina-Demo" \
-                       -Durl= \
-                       -Dversion=1.0
-
       - name: Run API tests
         run: mvn test -Dtest=APISampleTest
