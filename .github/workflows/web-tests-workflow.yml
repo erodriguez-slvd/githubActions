@@ -27,6 +27,7 @@ jobs:
       - name: Install and Start Selenium Webdriver
         run: |
           wget https://github.com/SeleniumHQ/selenium/releases/download/selenium-3.141.59/selenium-server-standalone-3.141.59.jar
+          gnome-terminal
           java -jar selenium-server-standalone-3.141.59.jar
       - name: Set up environment
         run: |
