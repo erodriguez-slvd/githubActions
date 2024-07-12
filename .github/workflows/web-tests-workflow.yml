@@ -22,8 +22,8 @@ jobs:
             sudo dpkg -i google-chrome-stable_current_amd64.deb
       - name: Install Google Chromedriver
         run: |
-          wget https://storage.googleapis.com/chrome-for-testing-public/126.0.6478.126/linux64/chrome-linux64.zip
-          unzip chromedriver_linux64.zip 
+          wget https://storage.googleapis.com/chrome-for-testing-public/126.0.6478.126/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
       - name: Install and Start Selenium Webdriver
         run: |
           wget https://github.com/SeleniumHQ/selenium/releases/download/selenium-3.141.59/selenium-server-standalone-3.141.59.jar
