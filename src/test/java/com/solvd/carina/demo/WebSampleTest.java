@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -30,6 +32,11 @@ import com.zebrunner.carina.core.registrar.tag.TestPriority;
  * @author qpsdemo
  */
 public class WebSampleTest implements IAbstractTest {
+    @BeforeClass
+    public void setupChromeOptions(){
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+    }
 
     @Test
     @MethodOwner(owner = "qpsdemo")
