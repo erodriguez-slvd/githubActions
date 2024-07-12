@@ -18,15 +18,27 @@ jobs:
           distribution: 'temurin'
       - name: Install Google Chrome
         run: |
-            chmod +x ./scripts/InstallChrome.sh
-                        ./scripts/InstallChrome.sh
-      - name: Set up environment
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo dpkg -i google-chrome-stable_current_amd64.deb
+      - name: Install Google Chromedriver
+        run: |
+          wget https://storage.googleapis.com/chrome-for-testing-public/126.0.6478.126/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          sudo mv -f chromedriver /usr/local/bin/chromedriver
+          sudo chown root:root /usr/local/bin/chromedriver
+          sudo chmod 0755 /usr/local/bin/chromedriver
+      - name: Install Maven
         run: |
           sudo apt-get update
           sudo apt-get install -y maven
       - name: Install dependencies
-        run: mvn clean install -DskipTests
-      - name: Start Selenium
-        run: mvn clean install -DskipTests
+        run:
+          mvn clean install -DskipTests
+      - name: Install and Start Selenium Webdriver
+        run: |
+            Xvfb :99 &  # Start virtual display
+                export DISPLAY=:99  # Set display variable
+      #          wget https://github.com/SeleniumHQ/selenium/releases/download/selenium-3.141.59/selenium-server-standalone-3.141.59.jar
+      #          java -jar selenium-server-standalone-3.141.59.jar
       - name: Run WEB tests
         run: mvn test -Dtest=WebSampleTest
