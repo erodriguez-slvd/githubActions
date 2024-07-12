@@ -20,13 +20,20 @@ jobs:
         run: |
             wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
             sudo dpkg -i google-chrome-stable_current_amd64.deb
+            google-chrome –version
+      - name: Install Google Chromedriver
+        run: |
+          wget https://storage.googleapis.com/chrome-for-testing-public/126.0.6478.126/linux64/chrome-linux64.zip
+          unzip chromedriver_linux64.zip 
+      - name: Install and Start Selenium Webdriver
+        run: |
+          wget https://github.com/SeleniumHQ/selenium/releases/download/selenium-3.141.59/selenium-server-standalone-3.141.59.jar
+          java -jar selenium-server-standalone-3.141.59.jar
       - name: Set up environment
         run: |
           sudo apt-get update
           sudo apt-get install -y maven
       - name: Install dependencies
-        run: mvn clean install -DskipTests
-      - name: Start Selenium
         run: mvn clean install -DskipTests
       - name: Run WEB tests
         run: mvn test -Dtest=WebSampleTest
