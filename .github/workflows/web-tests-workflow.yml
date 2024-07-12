@@ -30,6 +30,7 @@ jobs:
           java -jar selenium-server-standalone-3.141.59.jar
       - name: Set up environment
         run: |
+          gnome-terminal
           sudo apt-get update
           sudo apt-get install -y maven
       - name: Install dependencies
